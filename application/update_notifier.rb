@@ -5,11 +5,13 @@ require 'econfig'
 require_relative '../init.rb'
 
 extend Econfig::Shortcut
-Econfig.env = ENV['WORKER_ENV'] || 'development'
+Econfig.env = ENV['WORKER_ENV'] || 'production'
 Econfig.root = '.'
-# Econfig.root = File.expand_path('..', File.dirname(__FILE__))
 
 puts 'Updating the Routes'
-routes_json = TaiGo::ApiGateway.new.update_route
-all_routes = TaiGo::BusRoutesRepresenter.new(OpenStruct.new).from_json routes_json
-puts all_routes
+TaiGo::ApiGateway.new.update_routes
+puts 'Updating the Stops'
+TaiGo::ApiGateway.new.update_stops
+puts 'Updating the Stop Of Routes'
+TaiGo::ApiGateway.new.update_stop_of_routes
+puts 'All Data has been updated'
