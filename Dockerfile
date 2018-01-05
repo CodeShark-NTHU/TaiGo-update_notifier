@@ -17,7 +17,7 @@ CMD rake worker
 # Run and test local container with:
 #   rake docker:run
 # or:
-#   docker run -e --rm -it -v $(pwd)/config:/worker/config -w /worker taigo/taigo-update_notifier:0.1.0 ruby worker/update_notifier.rb
+#   docker run -e --rm -it -v $(pwd)/config:/worker/config -w /worker taigo/taigo-update_notifier:0.1.0 ruby application/update_notifier.rb
 
 # REMOTE:
 # Make sure Heroku app exists:
